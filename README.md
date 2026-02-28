@@ -1,4 +1,4 @@
-# 🚀 SpaceX Falcon 9 Landing Prediction — End-to-End ML & Data Science Capstone
+# SpaceX Falcon 9 Landing Prediction - End-to-End ML & Data Science Capstone
 **IBM Data Science Professional Certificate | Capstone Project**
 
 <p align="center">
@@ -78,6 +78,40 @@ flowchart TB
 
 ---
 
+## Repository Structure
+
+```bash
+spacex-falcon9-landing-prediction/
+├── README.md
+├── data/
+│   ├── raw/
+│   │   ├── spacex_launch_dash.csv   # used by Dash
+│   └── processed/
+├── notebooks/
+│   ├── 01_data_collection_api.ipynb
+│   ├── 02_data_collection_web_scraping.ipynb
+│   ├── 03_data_wrangling.ipynb
+│   ├── 04_eda_python.ipynb
+│   ├── 05_eda_sql.ipynb
+│   ├── 06_folium_geo_analytics.ipynb
+│   └── 07_ml_prediction.ipynb
+├── dashboard/
+│   └── Dashboard.py
+├── docs/
+│   └── final_presentation.pdf
+├── assets/
+│   ├── images/
+│   │   ├── banner.png
+│   │   ├── dash_overview.png
+│   │   ├── folium_map.png
+│   │   ├── confusion_matrix.png
+│   │   └── roc_curve.png
+│   └── diagrams/
+│       └── pipeline_flow.svg
+├── requirements.txt
+└── LICENSE
+```
+
 ## Repository contents
 
 | File / Notebook | Purpose |
@@ -90,8 +124,205 @@ flowchart TB
 | `Interactive Visual Analytics with Folium.ipynb` | Launch-site maps + proximity analysis |
 | `Machine Learning Prediction.ipynb` | Train/tune models + evaluate performance |
 | `Dashboard.py` | Plotly Dash app for interactive analytics |
-| `Final Presentation - Data Science SpaceX Capstone Project.pdf` | Slide deck / final presentation |
-| `SpaceX.csv` | Local snapshot (note: course also uses hosted datasets) |
+| `spacex_launch_dash.csv` | Local snapshot (note: course also uses hosted datasets) |
+
+---
+
+## 🧪 Data Sources
+
+This project integrates multiple real-world data acquisition methods to construct a machine-learning-ready dataset.
+
+**Primary Sources:**
+
+- **SpaceX REST API**
+  - Collected historical Falcon 9 launch data using `requests`
+  - Structured and converted JSON responses into Pandas DataFrames
+
+- **Web Scraping (Wikipedia)**
+  - Extracted supplemental launch information using `BeautifulSoup`
+  - Parsed HTML tables and cleaned extracted features
+
+- **IBM Skills Network Dataset**
+  - Provided additional curated launch datasets for modeling and dashboard visualization
+
+These combined sources enabled construction of a comprehensive feature set for predictive modeling.
+
+---
+
+## 🧹 Data Processing & Feature Engineering
+
+Significant preprocessing was performed to transform raw data into a machine-learning-ready format.
+
+**Key steps included:**
+
+- Schema normalization and datatype conversion
+- Handling missing values and inconsistent records
+- Encoding categorical features
+- Feature extraction from launch metadata
+- Construction of target variable (landing success)
+- Creation of clean training and testing datasets
+
+These steps ensured robust model training and reproducibility.
+
+---
+
+## 🔍 Exploratory Data Analysis (EDA)
+
+EDA was conducted using both Python and SQL to uncover patterns and relationships affecting landing success.
+
+---
+
+### Python-based Analysis (Pandas, Matplotlib, Seaborn)
+
+Key insights explored:
+
+- Payload mass vs landing success
+- Launch site performance comparison
+- Orbit type impact on landing outcome
+- Landing success trends over time
+
+<p align="center">
+  <img src="assets/images/eda_best_plot_1.png" width="48%">
+  <img src="assets/images/eda_best_plot_2.png" width="48%">
+</p>
+
+---
+
+### SQL-based Analysis (IBM DB2 via ipython-sql)
+
+SQL queries were used to validate and deepen analytical insights:
+
+- Success rate grouped by orbit type
+- Launch site success comparison
+- Payload mass distribution analysis
+- Aggregated landing outcome statistics
+
+SQL analysis complemented Python-based exploration.
+
+---
+
+## 🧭 Geo-Spatial Analytics (Folium)
+
+Interactive geospatial analysis was performed to visualize launch locations and landing outcomes.
+
+<p align="center">
+  <img src="assets/images/folium_map.png" width="85%">
+</p>
+
+**Key insights:**
+
+- All launch sites located near coastlines
+- Sites optimized for landing safety and logistics
+- KSC LC-39A demonstrated highest launch success rate
+
+This confirms operational advantages of specific launch locations.
+
+---
+
+## 🤖 Machine Learning Pipeline
+
+This is a **binary classification problem**:
+
+**Goal:** Predict Falcon 9 first-stage landing success.
+
+---
+
+### Models Implemented
+
+Four supervised machine learning algorithms were trained and evaluated:
+
+- Logistic Regression
+- Support Vector Machine (SVM)
+- K-Nearest Neighbors (KNN)
+- Decision Tree Classifier
+
+---
+
+### Hyperparameter Optimization
+
+Hyperparameter tuning performed using:
+
+- `GridSearchCV`
+- Cross-validation
+
+Ensured optimal model performance and reduced overfitting.
+
+---
+
+## 📈 Model Performance Results
+
+| Model | Tuning | Test Accuracy | Notes |
+|------|--------|--------------|------|
+| Logistic Regression | GridSearchCV | 83.33% | Strong linear baseline |
+| Support Vector Machine | GridSearchCV | 83.33% | Effective margin classifier |
+| K-Nearest Neighbors | GridSearchCV | 83.33% | Non-parametric method |
+| **Decision Tree** | GridSearchCV | **83.33%** | **Best model — interpretable and robust** |
+
+The Decision Tree model was selected as the final model.
+
+---
+
+## 📊 Model Evaluation
+
+<p align="center">
+  <img src="assets/images/confusion_matrix.png" width="48%">
+  <img src="assets/images/roc_curve.png" width="48%">
+</p>
+
+**Evaluation insights:**
+
+- High overall classification accuracy
+- Strong ability to predict successful landings
+- Minor false positive predictions observed
+
+Demonstrates effectiveness of feature engineering and model tuning.
+
+---
+
+## 📊 Interactive Dashboard (Plotly Dash)
+
+A fully interactive dashboard was developed to visualize mission performance and landing success.
+
+<p align="center">
+  <img src="assets/images/dash_overview.png" width="85%">
+</p>
+
+**Dashboard features:**
+
+- Launch site success analysis
+- Payload vs landing outcome visualization
+- Interactive filters
+- Dynamic mission exploration
+
+Provides real-time exploration of model insights.
+
+---
+
+## 🧠 Key Technical Skills Demonstrated
+
+### Machine Learning Engineering
+
+- Supervised classification modeling
+- Feature engineering
+- Hyperparameter tuning
+- Model evaluation and selection
+
+### Data Engineering Fundamentals
+
+- REST API ingestion
+- Web scraping pipelines
+- Data cleaning and transformation
+
+### Data Science & Analytics
+
+- Exploratory Data Analysis
+- SQL analytics
+- Statistical visualization
+
+### Data Visualization & Applications
+
+- Interactive dashboards (Plotly Dash)
+- Geospatial analysis (Folium)
 
 ---
 
