@@ -396,6 +396,14 @@ If you want the exact same datasets as the course, follow the download links ins
 
 ---
 
-## About the capstone
+# 🏁 Summary
 
-This project is based on the **Applied Data Science Capstone** from the IBM Data Science Professional Certificate, covering the complete data science methodology: data collection → wrangling → EDA → visualization → modeling → reporting.
+This project demonstrates a complete end-to-end machine learning pipeline:
+
+**Data acquisition → preprocessing → analysis → modeling → evaluation → visualization**
+
+Final model achieved:
+
+# ⭐ 83.33% accuracy predicting Falcon 9 landing success
+
+---
