@@ -5,6 +5,9 @@
   <img src="assets/images/banner.jpg" alt="Project Banner" width="100%"/>
 </p>
 
+![Repo Size](https://img.shields.io/github/repo-size/adhishnanda/IBM-Data-Science-SpaceX-Capstone-Project)
+![Last Commit](https://img.shields.io/github/last-commit/adhishnanda/IBM-Data-Science-SpaceX-Capstone-Project)
+
 <p align="center">
   <a href="https://github.com/adhishnanda/IBM-Data-Science-SpaceX-Capstone-Project"><img alt="GitHub Repo" src="https://img.shields.io/badge/GitHub-Repo-black"></a>
   <img alt="Python" src="https://img.shields.io/badge/Python-3.x-blue">
@@ -24,6 +27,15 @@ A complete **end-to-end data science capstone** (IBM Data Science Professional C
 
 ---
 
+## 🎯 Key Results
+
+- Built end-to-end ML pipeline predicting Falcon 9 landing success
+- Achieved 83.33% test accuracy using Decision Tree classifier
+- Developed interactive dashboard for mission analytics
+- Integrated API ingestion, web scraping, and geospatial analysis
+
+---
+
 ## 🔥 Why this project matters (ML Engineer lens)
 SpaceX reuses the Falcon 9 first stage to reduce launch cost. Accurately predicting landing success can inform:
 - mission planning & risk assessment
@@ -36,10 +48,11 @@ data acquisition → cleaning/wrangling → EDA (Python + SQL) → feature engin
 ---
 
 ## 📌 Quick Links
-- **📊 Dashboard:** `dashboard/` (Plotly Dash)
-- **🧭 Folium Geo-Analytics:** `notebooks/Interactive Visual Analytics with Folium.ipynb`
-- **🧠 ML Modeling:** `notebooks/Machine Learning Prediction.ipynb`
-- **🎤 Final Slides (PDF):** `docs/final_presentation.pdf`
+
+- 📊 **Interactive Dashboard Code:** [dashboard/Dashboard.py](dashboard/Dashboard.py)
+- 🧠 **Machine Learning Notebook:** [notebooks/07_ml_prediction.ipynb](notebooks/07_ml_prediction.ipynb)
+- 🧭 **Geo-Spatial Analysis Notebook:** [notebooks/06_folium_geo_analytics.ipynb](notebooks/06_folium_geo_analytics.ipynb)
+- 🌐 **Data Collection via API:** [notebooks/01_data_collection_api.ipynb](notebooks/01_data_collection_api.ipynb)
 
 ---
 
@@ -243,7 +256,7 @@ Four supervised machine learning algorithms were trained and evaluated:
 Hyperparameter tuning performed using:
 
 - `GridSearchCV`
-- Cross-validation
+- `Cross-validation`
 
 Ensured optimal model performance and reduced overfitting.
 
@@ -259,6 +272,21 @@ Ensured optimal model performance and reduced overfitting.
 | **Decision Tree** | GridSearchCV | **83.33%** | **Best model — interpretable and robust** |
 
 The Decision Tree model was selected as the final model.
+
+---
+
+## 🧠 Model Interpretation & Key Predictive Factors
+
+Decision Tree analysis revealed the most influential features:
+
+- Launch site
+- Orbit type
+- Payload mass
+- Mission year
+
+This confirms that operational maturity, mission profile, and payload constraints significantly influence landing success.
+
+The model captures real-world engineering constraints and demonstrates meaningful predictive capability.
 
 ---
 
@@ -336,7 +364,7 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -U pip
-pip install pandas numpy requests beautifulsoup4 lxml matplotlib seaborn scikit-learn folium dash plotly wget sqlalchemy ibm-db ibm-db-sa ipython-sql
+pip install -r requirements.txt
 ```
 
 > If you don’t want SQL/DB2, you can skip installing `ibm-db*` and `ipython-sql`.
@@ -345,14 +373,14 @@ pip install pandas numpy requests beautifulsoup4 lxml matplotlib seaborn scikit-
 
 Open Jupyter and run notebooks in this order:
 
-1. `Data Collection using API.ipynb`
-2. `Data Collection with Web Scraping.ipynb`
-3. `Data Wrangling.ipynb`
-4. `Exploratory Analysis Using Pandas and Matplotlib.ipynb`
-5. `Interactive Visual Analytics with Folium.ipynb`
-6. `Machine Learning Prediction.ipynb`
+1. notebooks/`01_data_collection_api.ipynb`  
+2. notebooks/`02_data_collection_web_scraping.ipynb`  
+3. notebooks/`03_data_wrangling.ipynb`  
+4. notebooks/`04_eda_python.ipynb`  
+5. notebooks/`06_folium_geo_analytics.ipynb`  
+6. notebooks/`07_ml_prediction.ipynb`  
 
-*(Optional)* `Exploratory Analysis using SQL.ipynb` requires a DB2 connection string.
+Optional: notebooks/`05_eda_sql.ipynb` requires a DB2 connection string.
 
 ---
 
@@ -369,7 +397,7 @@ wget "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0
 Then run:
 
 ```bash
-python Dashboard.py
+python dashboard/Dashboard.py
 ```
 
 Open the URL printed in your terminal (typically `http://127.0.0.1:8050/`).
@@ -386,16 +414,6 @@ Open the URL printed in your terminal (typically `http://127.0.0.1:8050/`).
 
 ---
 
-## Notes on data sources
-
-This project mixes:
-- locally included `spacex_launch_dash.csv`, and
-- IBM Skills Network hosted datasets used throughout the original capstone labs.
-
-If you want the exact same datasets as the course, follow the download links inside the notebooks.
-
----
-
 # 🏁 Summary
 
 This project demonstrates a complete end-to-end machine learning pipeline:
@@ -407,3 +425,32 @@ Final model achieved:
 # ⭐ 83.33% accuracy predicting Falcon 9 landing success
 
 ---
+
+## 🚀 ML Engineering Portfolio Positioning
+
+This project demonstrates real-world ML engineering workflow:
+
+- Multi-source data ingestion pipeline (API + Web Scraping)
+- Data preprocessing and feature engineering
+- Model training, tuning, and evaluation
+- Interactive analytics application deployment
+
+This repository showcases applied machine learning skills relevant to:
+
+- Machine Learning Engineer roles
+- Data Scientist roles
+- Applied AI roles
+
+---
+
+## 🔮 Future Improvements (Production-Grade ML Engineering)
+
+Potential enhancements:
+
+- MLflow for experiment tracking
+- Automated training pipelines
+- Model deployment using FastAPI
+- Docker containerization
+- Feature store integration
+
+These improvements would enable production deployment.
